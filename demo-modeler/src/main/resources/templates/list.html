@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>编辑条</title>
+    <meta name="description" content="">
+    <meta name="viewport"
+          content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, width=device-width">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<ul class="nav nav-pills">
+		<li role="presentation" class="active"><a
+			th:href="@{/create}">新建流程</a></li>
+		<li role="presentation"><a
+			th:href="@{/aaa}">导入流程</a></li>
+	</ul>
+	<table class="table table-striped table-hover table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>模型名称</th>
+        <th>key</th>
+        <th>版本</th>
+        <th>部署ID</th>
+        <th>创建时间</th>
+        <th>最后更新时间</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="data : ${models}">
+        <td th:text="${data.id}">LeaveBill:1:4</td>
+        <td th:text="${data.name}">流程名称</td>
+        <td th:text="${data.key}">1</td>
+        <td th:text="${data.version}">1</td>
+        <td th:text="${data.deploymentId}">1</td>
+        <td th:text="${data.createTime}">2018-02-25 17:28:35</td>
+        <td th:text="${data.lastUpdateTime}">2018-02-25 17:28:35</td>
+        <td>
+            <a href="javascript:;" th:attrappend="objId=${data.id}" class="font-blue deployBtn">发布流程</a>&nbsp;&nbsp;
+            <a th:href="@{/crm/model/export/{modelId}(modelId=${data.id})}" class="font-blue">导出流程</a>&nbsp;&nbsp;
+            <a th:href="@{/static/modeler.html(modelId=${data.id})}" class="font-blue delBtn">编辑流程</a>&nbsp;&nbsp;
+            <a href="javascript:;" th:attrappend="objId=${data.id}" class="font-blue delBtn">删除流程</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
