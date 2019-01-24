@@ -16,7 +16,10 @@ import org.activiti.engine.repository.Model;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -81,6 +84,17 @@ public class HelloController {
 		model.addAttribute("models", models);
 		return "list";
 	}
+	/**
+     * 删除model，如果model已经发布（deploy）则不能删除
+     *
+     * @param modelId
+     * @return
+     */
+    @RequestMapping(value = "/deleteModel/{modelId}")
+    public String deleteModel(@PathVariable("modelId") String modelId) {
+                    repositoryService.deleteModel(modelId);
+        return "redirect:/modelist";
+    }
 	/**
 	 * 发布模型为流程定义
 	 */

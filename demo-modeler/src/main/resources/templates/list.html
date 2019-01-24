@@ -42,7 +42,7 @@
             <a href="javascript:;" th:attrappend="objId=${data.id}" class="font-blue deployBtn">发布流程</a>&nbsp;&nbsp;
             <a th:href="@{/crm/model/export/{modelId}(modelId=${data.id})}" class="font-blue">导出流程</a>&nbsp;&nbsp;
             <a th:href="@{/static/modeler.html(modelId=${data.id})}" class="font-blue delBtn">编辑流程</a>&nbsp;&nbsp;
-            <a href="javascript:;" th:attrappend="objId=${data.id}" class="font-blue delBtn">删除流程</a>
+            <a th:href="@{/deleteModel/{modelId}(modelId=${data.id})}" class="font-blue delBtn">删除流程</a>
         </td>
     </tr>
     </tbody>
